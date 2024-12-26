@@ -75,21 +75,21 @@ const Vision = () => {
             
             <motion.p 
               variants={itemVariants}
-              className="text-base mb-4 leading-relaxed opacity-90 font-light hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
+              className="text-base mb-4 leading-relaxed opacity-90 font-roboto-medium hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
             >
               Our vision at Adivirtus is to bridge the gap between personalized learning and workforce efficiency. By leveraging AI-driven static and dynamic profiling, we aim to empower individuals and businesses to unlock their full potential. We're here to solve real-world challenges with innovative, scalable solutions.
             </motion.p>
             
             <motion.p 
               variants={itemVariants}
-              className="text-base mb-4 leading-relaxed font-bold hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
+              className="text-base mb-4 leading-relaxed font-roboto-medium hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
             >
               Building the future of corporate training.
             </motion.p>
 
             <motion.p 
               variants={itemVariants}
-              className="text-base mb-8 leading-relaxed opacity-90 font-light hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
+              className="text-base mb-8 leading-relaxed opacity-90 font-roboto-medium hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
             >
               We envision a world where every learning experience is data-driven, fully personalized, and seamlessly adaptable to evolving workplace needs. By blending cutting-edge analytics with user-centric design, we strive to create training environments that not only scale effectively but also inspire continuous growth and success for employees and organizations alike.
             </motion.p>
@@ -172,7 +172,7 @@ const Vision = () => {
             />
             
             <motion.a
-              href="https://www.instagram.com/reel/DDN4SZESIRX/?utm_source=ig_web_copy_link"
+              href="https://www.instagram.com/reel/DECDND_PBE1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
               target="_blank"
               rel="noopener noreferrer"
               className="absolute inset-0 z-20"
