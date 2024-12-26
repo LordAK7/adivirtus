@@ -9,7 +9,7 @@ const teamMembers = [
     image: "/Team/RehanOP.png"
   },
   {
-    name: "Adiya",
+    name: "Adtiya Vijay Kamble",
     role: "Founder & Chief Executive Officer",
     image: "/Team/God.jpeg",
     isLarge: true
