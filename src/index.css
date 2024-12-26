@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add these base styles */
+@layer base {
+  @media screen and (min-width: 1024px) {
+    html {
+      zoom: 125%;
+      -ms-zoom: 125%;
+      -webkit-zoom: 125%;
+      -moz-transform: scale(1.25);
+      -moz-transform-origin: 0 0;
+    }
+  }
+  
+  body {
+    @apply bg-black min-h-screen;
+  }
+}
