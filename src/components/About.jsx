@@ -196,10 +196,6 @@ const About = () => {
               className="w-full max-w-sm mx-auto transform xl:translate-y-24 lg:max-w-none relative z-10"
               src="/App_Phone.png" 
               alt="Adivirtus App Interface"
-              whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.3 }
-              }}
             />
           </motion.div>
         </div>
