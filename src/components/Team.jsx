@@ -107,8 +107,13 @@ const Team = () => {
               transition={{ duration: 0.5, delay: 0.8 }}
               className="flex items-end justify-start px-8 py-8 xl:px-12 lg:order-4"
             >
-              <a href="#" title="" className="inline-flex items-center text-sm font-semibold text-gray-300 transition-all duration-200 group hover:text-white hover:underline">
-                Watch our content
+              <a 
+                href="https://www.instagram.com/thegodofcomputers/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center text-sm font-semibold text-gray-300 transition-all duration-200 group hover:text-white hover:underline"
+              >
+                Follow us on Instagram
                 <svg className="w-5 h-5 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
