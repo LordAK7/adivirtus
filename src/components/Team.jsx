@@ -15,9 +15,25 @@ const teamMembers = [
     isLarge: true
   },
   {
-    name: "Suyash Gawde",
+    name: "Vijay Kamble",
+    role: "Mentor and Advisor",
+    image: "/Team/Vijay.png",
+    isLarge: true
+  },
+  {
+    name: "Suyesh Gawde",
     role: "Chief Operations Officer",
     image: "/Team/Suyesh.png"
+  },
+  {
+    name: "Gauri Dhuri",
+    role: "HR & Secretary",
+    image: "/Team/Gauri.png"
+  },
+  {
+    name: "Tristan D'Souza",
+    role: "Chief Finance Officer",
+    image: "/Team/Tristan.png"
   },
   {
     name: "Aryan Yuvraj",
@@ -25,9 +41,9 @@ const teamMembers = [
     image: "/Team/Aryan.jpg"
   },
   {
-    name: "Gauri Dhuri",
-    role: "HR & Secretary",
-    image: "/Team/Gauri.png"
+    name: "Yadnesh Ubale",
+    role: "Chief Technology Officer",
+    image: "/Team/Yadnesh.png"
   }
 ];  
 
