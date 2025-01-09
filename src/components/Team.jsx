@@ -27,7 +27,7 @@ const teamMembers = [
   },
   {
     name: "Gauri Dhuri",
-    role: "HR & Secretary",
+    role: "HR & Secretary to CEO",
     image: "/Team/Gauri.png"
   },
   {

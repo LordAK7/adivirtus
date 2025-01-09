@@ -37,7 +37,7 @@ const Hero = () => {
                   duration: 0.7,
                   type: "spring",
                   bounce: 0.4
-                }}
+                }} 
                 whileHover={{ scale: 1.02 }}
                 className="text-3xl font-normal text-white sm:text-4xl lg:text-5xl xl:text-6xl"
               >
