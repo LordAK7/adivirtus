@@ -7,7 +7,6 @@ import Vision from './components/Vision';
 import Team from './components/Team';
 import Time from './components/Time';
 import Footer from './components/Footer';
-import Resource from './components/Resource';
 
 function App() {
   return (
@@ -28,11 +27,6 @@ function App() {
         </section>
         <section id="vision">
           <Vision />
-
-          <section id="resource">
-          <Resource />
-        </section>
-
         </section>
         <section id="team">
           <Team />

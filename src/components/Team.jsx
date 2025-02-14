@@ -4,46 +4,10 @@ import { useRef } from "react";
 
 const teamMembers = [
   {
-    name: "Rehan",
-    role: "Chief Product Officer",
-    image: "/Team/RehanOP.png"
-  },
-  {
     name: "Aditya Vijay Kamble",
     role: "Founder & Chief Executive Officer",
     image: "/Team/God.jpeg",
     isLarge: true
-  },
-  {
-    name: "Vijay Kamble",
-    role: "Mentor and Advisor",
-    image: "/Team/Vijay.png",
-    isLarge: true
-  },
-  {
-    name: "Suyesh Gawde",
-    role: "Chief Operations Officer",
-    image: "/Team/Suyesh.png"
-  },
-  {
-    name: "Gauri Dhuri",
-    role: "HR & Secretary to CEO",
-    image: "/Team/Gauri.png"
-  },
-  {
-    name: "Tristan D'Souza",
-    role: "Chief Finance Officer",
-    image: "/Team/Tristan.png"
-  },
-  {
-    name: "Aryan Yuvraj",
-    role: "Chief Research Officer",
-    image: "/Team/Aryan.jpg"
-  },
-  {
-    name: "Yadnesh Ubale",
-    role: "Chief Technology Officer",
-    image: "/Team/Yadnesh.png"
   }
 ];  
 
@@ -83,17 +47,19 @@ const Team = () => {
     <section className="py-12 bg-black sm:py-16 lg:py-20 xl:py-24">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="overflow-hidden bg-zinc-900 rounded-3xl">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
+          <div className="relative grid grid-cols-2 lg:grid-cols-4">
+            <div className="absolute left-0 right-0 w-full border-t border-gray-700" style={{ top: '50%' }}></div>
+
             <motion.div
               ref={headerRef}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6 }}
-              className="col-span-2 px-8 py-12 text-center xl:px-12 xl:pr-24 lg:text-left lg:order-1"
+              className="col-span-2 px-8 py-12 text-center xl:px-12 xl:pr-24 lg:text-left lg:order-1 lg:col-span-3"
             >
               <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">Meet the Team</h2>
               <p className="mt-4 text-base font-normal leading-7 text-gray-300 lg:text-lg lg:mt-6 lg:leading-8">
-              Adivirtus is driven by a passionate team of innovators, each bringing unique expertise to redefine learning and workforce solutions. Together, we’re turning bold ideas into impactful realities.
+              Adivirtus is driven by a passionate team of innovators, each bringing unique expertise to redefine learning and workforce solutions. Together, we're turning bold ideas into impactful realities.
               </p>
             </motion.div>
 
@@ -105,7 +71,7 @@ const Team = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="flex items-end justify-start px-8 py-8 xl:px-12 lg:order-4"
+              className="col-span-2 lg:col-span-4 flex items-end justify-start px-8 py-8 xl:px-12 lg:order-4"
             >
               <a 
                 href="https://www.instagram.com/thegodofcomputers/" 
