@@ -497,12 +497,12 @@ const SkillMatrix = ({ skills }) => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="p-4 pt-32 mt-24 bg-gradient-to-br from-[#050505]/95 via-[#070707]/90 to-[#090909]/85 
+            className="p-4 pt-30 mt-24 bg-gradient-to-br from-[#050505]/95 via-[#070707]/90 to-[#090909]/85 
               backdrop-blur-xl rounded-2xl border border-gray-900/20 shadow-2xl"
           >
             <motion.div 
               variants={itemVariants}
-              className="flex justify-between items-start mb-8"
+              className="flex justify-between items-start mb-1"
             >
               <div>
                 <h3 className="text-2xl font-medium bg-gradient-to-r from-white via-white to-gray-400 
