@@ -42,7 +42,7 @@ const Header = () => {
           {/* Logo */}
           <motion.a
             href="#"
-            className="text-xl text-white font-light tracking-wide"
+            className="text-xl text-white font-semibold tracking-wide"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -75,7 +75,7 @@ const Header = () => {
             ))}
             
             <motion.button
-              onClick={() => scrollToSection('time')}
+              onClick={() => scrollToSection('contact')}
               className="ml-4 px-6 py-2 text-sm font-medium text-white bg-[#2C7EFF] rounded-full transition-all duration-300"
               whileHover={{ 
                 scale: 1.02,

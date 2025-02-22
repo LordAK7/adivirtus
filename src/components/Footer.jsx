@@ -12,7 +12,10 @@ const Footer = () => {
   };
 
   return (
-    <footer ref={ref} className="py-8 bg-[#000000] border-t border-[#2C7EFF]/10">
+    <footer ref={ref} className="py-8 bg-[#000000] border-t border-[#2C7EFF]/10 relative">
+      {/* Animated blue line */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-blue-400 animate-pulse" />
+      
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           {/* Copyright */}

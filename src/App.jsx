@@ -9,6 +9,7 @@ import Time from './components/Time';
 import Footer from './components/Footer';
 import SkillMatrix from './demo/SkillMatrix';
 import HRDashboard from './components/HRDashboard';
+import Contact from './components/Contact';
 function App() {
   return (
     <div>
@@ -27,7 +28,7 @@ function App() {
           <Features />
         </section>
         <section id="hrDashboard">
-          <Analysis />
+          <HRDashboard />
         </section>
         <section id="skillMatrix">
           <SkillMatrix />
@@ -35,8 +36,8 @@ function App() {
         <section id="founder">
           <Team />
         </section>
-        <section id="time">
-          <Time />
+        <section id="contact">
+          <Contact Us />
         </section>
       </main>
       <Footer />
