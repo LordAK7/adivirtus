@@ -367,7 +367,7 @@ const HRDashboard = () => {
 
           {/* Right Column - Interactive Dashboard */}
           <motion.div
-            className="relative bg-white/[0.02] rounded-2xl p-6 border border-white/10 backdrop-blur-xl"
+            className="relative bg-white/[0.02] rounded-2xl p-6 border border-white/10 backdrop-blur-xl pt-12 mt-6"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
