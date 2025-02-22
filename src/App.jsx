@@ -1,14 +1,14 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Info from './components/Info';
+import Features from './components/Features';
 import Analysis from './components/Analysis';
 import Vision from './components/Vision';
 import Team from './components/Team';
 import Time from './components/Time';
 import Footer from './components/Footer';
 import SkillMatrix from './demo/SkillMatrix';
-
+import HRDashboard from './components/HRDashboard';
 function App() {
   return (
     <div>
@@ -23,11 +23,11 @@ function App() {
         <section id="about">
           <About />
         </section>
-        <section id="info">
-          <Info />
+        <section id="features">
+          <Features />
         </section>
-        <section id="analysis">
-          <Analysis />
+        <section id="hrDashboard">
+          <HRDashboard />
         </section>
         <section id="skillMatrix">
           <SkillMatrix />

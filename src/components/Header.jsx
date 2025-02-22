@@ -25,8 +25,8 @@ const Header = () => {
     { id: 'hero', label: 'Home' },
     { id: 'vision', label: 'Vision' },
     { id: 'about', label: 'About' },
-    { id: 'info', label: 'Info' },
-    { id: 'analysis', label: 'Analysis' },
+    { id: 'features', label: 'Features  ' },
+    { id: 'hrDashboard', label: 'HRDashboard' },
     { id: 'team', label: 'Team' }
   ];
 
@@ -46,7 +46,7 @@ const Header = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Adivirtus
+            Adivirtus AI
           </motion.a>
 
           {/* Mobile Menu Button */}
