@@ -10,6 +10,8 @@ import {
 } from 'recharts';
 import { useState, useMemo, useEffect } from 'react';
 import { FaLayerGroup } from 'react-icons/fa';
+import SkillIntelligenceHub from '../components/SkillIntelligenceHub';
+import GrowthVelocityTracker from '../components/GrowthVelocityTracker';
 
 const SkillIcons = {
   technical: (
@@ -466,70 +468,10 @@ const SkillMatrix = ({ skills }) => {
             </p>
           </div>
           
-          <ul className="space-y-10">
-            <motion.li 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="group relative"
-            >
-              <div className="flex items-center gap-4 mb-3">
-                <div className="h-px w-12 bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF]" />
-                <span className="text-[#2C7EFF] text-sm font-medium tracking-wide">Compare</span>
-              </div>
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#2C7EFF]/20 to-transparent 
-                  rounded-lg blur-lg group-hover:opacity-75 transition duration-1000 group-hover:duration-200 
-                  opacity-0 group-hover:-inset-2" />
-                <p className="relative text-xl text-gray-400 leading-relaxed max-w-2xl pl-16">
-                  Compare your skills against industry standards and top performers
-                </p>
-              </div>
-            </motion.li>
-
-            <motion.li 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="group relative"
-            >
-              <div className="flex items-center gap-4 mb-3">
-                <div className="h-px w-12 bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF]" />
-                <span className="text-[#2C7EFF] text-sm font-medium tracking-wide">Track</span>
-              </div>
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#2C7EFF]/20 to-transparent 
-                  rounded-lg blur-lg group-hover:opacity-75 transition duration-1000 group-hover:duration-200 
-                  opacity-0 group-hover:-inset-2" />
-                <p className="relative text-xl text-gray-400 leading-relaxed max-w-2xl pl-16">
-                  Track your growth and learning velocity in key competency areas
-                </p>
-              </div>
-            </motion.li>
-
-            <motion.li 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="group relative"
-            >
-              <div className="flex items-center gap-4 mb-3">
-                <div className="h-px w-12 bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF]" />
-                <span className="text-[#2C7EFF] text-sm font-medium tracking-wide">Identify</span>
-              </div>
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#2C7EFF]/20 to-transparent 
-                  rounded-lg blur-lg group-hover:opacity-75 transition duration-1000 group-hover:duration-200 
-                  opacity-0 group-hover:-inset-2" />
-                <p className="relative text-xl text-gray-400 leading-relaxed max-w-2xl pl-16">
-                  Identify critical gaps and focus areas for improvement
-                </p>
-              </div>
-            </motion.li>
-          </ul>
+          <div className="space-y-6">
+            <SkillIntelligenceHub />
+            <GrowthVelocityTracker />
+          </div>
         </div>
 
         <motion.div

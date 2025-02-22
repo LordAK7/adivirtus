@@ -140,7 +140,7 @@ const Team = () => {
               </div>
 
               <motion.a
-                href="https://www.linkedin.com/in/aditya-kamble-god/"
+                href="https://www.linkedin.com/in/aditya-kamble-entrepreneur/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 text-[#2C7EFF] group"

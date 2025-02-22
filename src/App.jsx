@@ -27,12 +27,12 @@ function App() {
           <Features />
         </section>
         <section id="hrDashboard">
-          <HRDashboard />
+          <Analysis />
         </section>
         <section id="skillMatrix">
           <SkillMatrix />
         </section>
-        <section id="team">
+        <section id="founder">
           <Team />
         </section>
         <section id="time">
