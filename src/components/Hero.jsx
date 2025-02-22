@@ -39,7 +39,7 @@ const Hero = () => {
             className="mb-6"
           >
             <span className="text-[#2C7EFF] text-sm font-medium tracking-widest uppercase">
-              The Future of Learning
+              The Future of Corporate Learning
             </span>
           </motion.div>
 

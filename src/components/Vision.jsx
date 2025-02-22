@@ -58,12 +58,21 @@ const Vision = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl sm:text-6xl font-light text-white leading-tight tracking-tight"
+              className="text-4xl sm:text-5xl font-light text-white leading-tight tracking-tight"
             >
-              Transform how we understand and develop{' '}
+              Empowering{' '}
               <span className="bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] text-transparent bg-clip-text font-normal">
-                human potential
+                future-ready
               </span>
+              {' '}workforces through{' '}
+              <span className="bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] text-transparent bg-clip-text font-normal">
+                adaptive
+              </span>
+              {' '}and{' '}
+              <span className="bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] text-transparent bg-clip-text font-normal">
+                personalized
+              </span>
+              {' '}upskilling.
             </motion.h2>
 
             <motion.div
