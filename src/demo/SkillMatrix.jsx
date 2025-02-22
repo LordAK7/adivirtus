@@ -474,122 +474,142 @@ const SkillMatrix = ({ skills }) => {
           </div>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="p-4 pt-8 bg-gradient-to-br from-[#050505]/95 via-[#070707]/90 to-[#090909]/85 
-            backdrop-blur-xl rounded-2xl border border-gray-900/20 shadow-2xl"
-        >
-          <motion.div 
-            variants={itemVariants}
-            className="flex justify-between items-start mb-8"
+        <div className="space-y-6">
+          <div className="relative pl-8 border-l border-[#2C7EFF]/30 mt-8">
+            <div className="absolute left-0 top-0 w-[1px] h-full overflow-hidden">
+              <motion.div 
+                className="h-full w-full bg-gradient-to-b from-[#2C7EFF] to-[#47A2FF]"
+                initial={{ y: "100%" }}
+                whileInView={{ y: "0%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              />
+            </div>
+            <h3 className="text-xl font-medium bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] bg-clip-text text-transparent">
+              Beta Feature Preview
+            </h3>
+            <p className="text-lg text-gray-400 mt-3 leading-relaxed">
+              Experience our revolutionary Skill Matrix visualization - an innovative approach to mapping your professional growth journey in real-time.
+            </p>
+          </div>
+          
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="p-4 pt-32 mt-24 bg-gradient-to-br from-[#050505]/95 via-[#070707]/90 to-[#090909]/85 
+              backdrop-blur-xl rounded-2xl border border-gray-900/20 shadow-2xl"
           >
-            <div>
-              <h3 className="text-2xl font-medium bg-gradient-to-r from-white via-white to-gray-400 
-                bg-clip-text text-transparent tracking-tight">Skill Matrix</h3>
-              <p className="text-sm text-gray-400/80 mt-1 tracking-wide">Professional Competency Overview</p>
-            </div>
-            <div className="flex gap-2 p-1 bg-gray-800/30 rounded-lg">
-              {viewOptions.map((view) => (
-                <motion.button
-                  key={view.id}
-                  onClick={() => setActiveView(view.id)}
-                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all
-                    ${activeView === view.id 
-                      ? 'bg-opacity-20 shadow-lg' 
-                      : 'text-gray-400 hover:text-white hover:bg-gray-700/30'
-                    }`}
-                  style={{
-                    backgroundColor: activeView === view.id ? `${view.color}20` : 'transparent',
-                    color: activeView === view.id ? view.color : undefined,
-                    border: activeView === view.id ? `1px solid ${view.color}40` : '1px solid transparent'
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {view.label}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
+            <motion.div 
+              variants={itemVariants}
+              className="flex justify-between items-start mb-8"
+            >
+              <div>
+                <h3 className="text-2xl font-medium bg-gradient-to-r from-white via-white to-gray-400 
+                  bg-clip-text text-transparent tracking-tight">Skill Matrix</h3>
+                <p className="text-sm text-gray-400/80 mt-1 tracking-wide">Professional Competency Overview</p>
+              </div>
+              <div className="flex gap-2 p-1 bg-gray-800/30 rounded-lg">
+                {viewOptions.map((view) => (
+                  <motion.button
+                    key={view.id}
+                    onClick={() => setActiveView(view.id)}
+                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all
+                      ${activeView === view.id 
+                        ? 'bg-opacity-20 shadow-lg' 
+                        : 'text-gray-400 hover:text-white hover:bg-gray-700/30'
+                      }`}
+                    style={{
+                      backgroundColor: activeView === view.id ? `${view.color}20` : 'transparent',
+                      color: activeView === view.id ? view.color : undefined,
+                      border: activeView === view.id ? `1px solid ${view.color}40` : '1px solid transparent'
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {view.label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
 
-          <motion.div 
-            variants={itemVariants}
-            className="h-[600px] relative"
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-[#2C7EFF]/5 to-transparent 
-              rounded-xl opacity-50" />
-            <ResponsiveContainer width="100%" height="100%">
-              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-                <PolarGrid 
-                  stroke="#374151" 
-                  strokeDasharray="3 3" 
-                  gridType="polygon"
-                />
-                <PolarAngleAxis 
-                  dataKey="subject" 
-                  stroke="#9CA3AF"
-                  tickLine={false}
-                  fontSize={12}
-                  fontFamily="SF Pro Display, system-ui"
-                />
-                <Tooltip content={<CustomTooltip />} />
-                
-                {(activeView === 'all' || activeView === 'industry') && (
-                  <Radar
-                    name="Industry Average"
-                    dataKey="industryAvg"
-                    stroke={CHART_COLORS.industry.stroke}
-                    fill={CHART_COLORS.industry.fill}
-                    fillOpacity={activeView === 'all' ? 0.15 : CHART_COLORS.industry.opacity}
-                    strokeWidth={1}
-                    strokeDasharray="4 4"
-                    strokeOpacity={0.6}
+            <motion.div 
+              variants={itemVariants}
+              className="h-[600px] relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-[#2C7EFF]/5 to-transparent 
+                rounded-xl opacity-50" />
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+                  <PolarGrid 
+                    stroke="#374151" 
+                    strokeDasharray="3 3" 
+                    gridType="polygon"
                   />
-                )}
-                
-                {(activeView === 'all' || activeView === 'current') && (
-                  <Radar
-                    name="Current"
-                    dataKey="value"
-                    stroke={CHART_COLORS.current.stroke}
-                    fill="url(#blueGradient)"
-                    fillOpacity={activeView === 'all' ? 0.3 : 0.4}
-                    strokeWidth={2}
-                    strokeOpacity={0.8}
+                  <PolarAngleAxis 
+                    dataKey="subject" 
+                    stroke="#9CA3AF"
+                    tickLine={false}
+                    fontSize={12}
+                    fontFamily="SF Pro Display, system-ui"
                   />
-                )}
-                
-                {(activeView === 'all' || activeView === 'top') && (
-                  <Radar
-                    name="Top Percentile"
-                    dataKey="industryTop"
-                    stroke={CHART_COLORS.top.stroke}
-                    fill={CHART_COLORS.top.fill}
-                    fillOpacity={activeView === 'all' ? 0.15 : CHART_COLORS.top.opacity}
-                    strokeWidth={1}
-                    strokeDasharray="4 4"
-                    strokeOpacity={0.6}
-                  />
-                )}
-                
-                <defs>
-                  <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
-                    {CHART_COLORS.current.gradient.map((stop) => (
-                      <stop 
-                        key={stop.offset}
-                        offset={stop.offset}
-                        stopColor={stop.color}
-                        stopOpacity={activeView === 'all' ? stop.opacity * 0.75 : stop.opacity}
-                      />
-                    ))}
-                  </linearGradient>
-                </defs>
-              </RadarChart>
-            </ResponsiveContainer>
+                  <Tooltip content={<CustomTooltip />} />
+                  
+                  {(activeView === 'all' || activeView === 'industry') && (
+                    <Radar
+                      name="Industry Average"
+                      dataKey="industryAvg"
+                      stroke={CHART_COLORS.industry.stroke}
+                      fill={CHART_COLORS.industry.fill}
+                      fillOpacity={activeView === 'all' ? 0.15 : CHART_COLORS.industry.opacity}
+                      strokeWidth={1}
+                      strokeDasharray="4 4"
+                      strokeOpacity={0.6}
+                    />
+                  )}
+                  
+                  {(activeView === 'all' || activeView === 'current') && (
+                    <Radar
+                      name="Current"
+                      dataKey="value"
+                      stroke={CHART_COLORS.current.stroke}
+                      fill="url(#blueGradient)"
+                      fillOpacity={activeView === 'all' ? 0.3 : 0.4}
+                      strokeWidth={2}
+                      strokeOpacity={0.8}
+                    />
+                  )}
+                  
+                  {(activeView === 'all' || activeView === 'top') && (
+                    <Radar
+                      name="Top Percentile"
+                      dataKey="industryTop"
+                      stroke={CHART_COLORS.top.stroke}
+                      fill={CHART_COLORS.top.fill}
+                      fillOpacity={activeView === 'all' ? 0.15 : CHART_COLORS.top.opacity}
+                      strokeWidth={1}
+                      strokeDasharray="4 4"
+                      strokeOpacity={0.6}
+                    />
+                  )}
+                  
+                  <defs>
+                    <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
+                      {CHART_COLORS.current.gradient.map((stop) => (
+                        <stop 
+                          key={stop.offset}
+                          offset={stop.offset}
+                          stopColor={stop.color}
+                          stopOpacity={activeView === 'all' ? stop.opacity * 0.75 : stop.opacity}
+                        />
+                      ))}
+                    </linearGradient>
+                  </defs>
+                </RadarChart>
+              </ResponsiveContainer>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
