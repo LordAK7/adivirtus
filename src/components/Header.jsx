@@ -1,15 +1,15 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MenuIcon = () => (
-  <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg className="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-  </svg>
+  <motion.div 
+    className="flex flex-col gap-1.5 cursor-pointer"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <div className="w-6 h-px bg-white/80" />
+    <div className="w-6 h-px bg-white/80" />
+  </motion.div>
 );
 
 const Header = () => {
@@ -21,62 +21,110 @@ const Header = () => {
     setExpanded(false);
   };
 
-  return (
-    <header className="py-2 bg-black sm:py-3 fixed w-full z-50">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div className="shrink-0">
-            <a href="#" title="" className="flex items-center gap-2">
-              <img className="w-auto h-9 sm:h-10" src="/logowhite.svg" alt="Adivirtus Logo" />
-              <span className="text-white text-xl font-semibold">ADIVIRTUS</span>
-            </a>
-          </div>
+  const menuItems = [
+    { id: 'hero', label: 'Home' },
+    { id: 'vision', label: 'Vision' },
+    { id: 'about', label: 'About' },
+    { id: 'info', label: 'Info' },
+    { id: 'analysis', label: 'Analysis' },
+    { id: 'team', label: 'Team' }
+  ];
 
+  return (
+    <motion.header 
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+      className="fixed w-full z-50 backdrop-blur-xl bg-[#020202]/80 border-b border-white/5"
+    >
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <motion.a
+            href="#"
+            className="text-xl text-white font-light tracking-wide"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Adivirtus
+          </motion.a>
+
+          {/* Mobile Menu Button */}
           <div className="flex md:hidden">
             <button
               type="button"
               className="text-white"
               onClick={() => setExpanded(!expanded)}
-              aria-expanded={expanded}
             >
-              {!expanded ? <MenuIcon /> : <CloseIcon />}
+              <MenuIcon />
             </button>
           </div>
 
-          <nav className="hidden ml-auto mr-10 space-x-10 md:flex md:items-center md:justify-end lg:space-x-12">
-            <button onClick={() => scrollToSection('hero')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Home</button>
-            <button onClick={() => scrollToSection('about')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">About</button>
-            <button onClick={() => scrollToSection('info')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Info</button>
-            <button onClick={() => scrollToSection('analysis')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Analysis</button>
-            <button onClick={() => scrollToSection('vision')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Vision</button>
-            <button onClick={() => scrollToSection('team')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Team</button>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {menuItems.map((item) => (
+              <motion.button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-sm font-medium text-gray-400 transition-colors duration-200 hover:text-white"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {item.label}
+              </motion.button>
+            ))}
+            
+            <motion.button
+              onClick={() => scrollToSection('time')}
+              className="ml-4 px-6 py-2 text-sm font-medium text-white bg-[#2C7EFF] rounded-full transition-all duration-300"
+              whileHover={{ 
+                scale: 1.02,
+                backgroundColor: "rgba(44, 126, 255, 0.9)"
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Contact Us
+            </motion.button>
           </nav>
-
-          <div className="relative hidden md:items-center md:justify-center md:inline-flex group">
-            <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
-            <button onClick={() => scrollToSection('time')} className="relative inline-flex items-center justify-center px-6 py-2 text-base font-normal text-white bg-black border border-transparent rounded-full" role="button">Contact Us</button>
-          </div>
         </div>
 
-        {expanded && (
-          <nav>
-            <div className="flex flex-col pt-4 pb-2 space-y-4">
-              <button onClick={() => scrollToSection('hero')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Home</button>
-              <button onClick={() => scrollToSection('about')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">About</button>
-              <button onClick={() => scrollToSection('info')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Info</button>
-              <button onClick={() => scrollToSection('analysis')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Analysis</button>
-              <button onClick={() => scrollToSection('vision')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Vision</button>
-              <button onClick={() => scrollToSection('team')} className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white">Team</button>
-
-              <div className="relative inline-flex items-center justify-center group">
-                <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
-                <button onClick={() => scrollToSection('time')} className="relative inline-flex items-center justify-center w-full px-6 py-2 text-base font-normal text-white bg-black border border-transparent rounded-full" role="button">Contact Us</button>
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {expanded && (
+            <motion.nav
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+              className="md:hidden overflow-hidden"
+            >
+              <div className="flex flex-col py-4 space-y-4">
+                {menuItems.map((item) => (
+                  <motion.button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-sm font-medium text-gray-400 transition-colors duration-200 hover:text-white text-left"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+                
+                <motion.button
+                  onClick={() => scrollToSection('time')}
+                  className="px-6 py-2 text-sm font-medium text-white bg-[#2C7EFF] rounded-full transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Contact Us
+                </motion.button>
               </div>
-            </div>
-          </nav>
-        )}
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

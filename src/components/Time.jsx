@@ -28,42 +28,48 @@ const Time = () => {
   }, []);
 
   useEffect(() => {
-    let startTime = performance.now();
-    let animationPhase = 0;
+    let lastTime = performance.now();
+    let animationFrame;
+    let currentPhase = 0;
+    const phases = [
+      { duration: 3000, speed: 0.5 },
+      { duration: 1000, speed: 4 },
+      { duration: 2000, speed: 2 },
+      { duration: Infinity, speed: 1 }
+    ];
+    let phaseStartTime = performance.now();
 
     const animate = (currentTime) => {
-      const elapsed = currentTime - startTime;
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
       
-      if (elapsed > 3000 && animationPhase === 0) {
-        animationPhase = 1;
-      } else if (elapsed > 4000 && animationPhase === 1) {
-        animationPhase = 2;
-      } else if (elapsed > 6000 && animationPhase === 2) {
-        animationPhase = 3;
+      // Check if we should move to next phase
+      const phaseElapsed = currentTime - phaseStartTime;
+      if (phaseElapsed > phases[currentPhase].duration) {
+        currentPhase = Math.min(currentPhase + 1, phases.length - 1);
+        phaseStartTime = currentTime;
       }
 
-      let currentSpeed;
-      switch (animationPhase) {
-        case 0:
-          currentSpeed = 0.5;
-          break;
-        case 1:
-          currentSpeed = 4;
-          break;
-        case 2:
-          currentSpeed = 2;
-          break;
-        default:
-          currentSpeed = 1;
-      }
+      // Smooth speed transition with easing
+      const targetSpeed = phases[currentPhase].speed;
+      setSpeed(prev => {
+        const diff = targetSpeed - prev;
+        return Math.abs(diff) < 0.05 ? targetSpeed : prev + diff * 0.15;
+      });
 
-      setSpeed(currentSpeed);
-      setRotation(prev => (prev + currentSpeed) % 360);
-      requestAnimationFrame(animate);
+      // Update rotation with smoother interpolation
+      setRotation(prev => {
+        const target = prev + (deltaTime * 0.1 * speed);
+        return prev + (target - prev) * 0.2;
+      });
+      
+      animationFrame = requestAnimationFrame(animate);
     };
     
-    const animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
+    animationFrame = requestAnimationFrame(animate);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
   }, []);
 
   const formatTime = (date) => {
@@ -107,7 +113,7 @@ const Time = () => {
       <div className="max-w-6xl mx-auto px-4 relative">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <motion.div 
-            className="relative w-72 h-72 group"
+            className="relative w-[min(72vw,288px)] h-[min(72vw,288px)] group"
             style={{
               scale: clockScale,
               opacity: clockOpacity,
@@ -178,8 +184,8 @@ const Time = () => {
                       transform: `translateX(-50%) rotate(${rotation * speed * 6}deg)`,
                     }}
                   >
-                    <div className="w-full h-full bg-red-500" />
-                    <div className="absolute -bottom-4 left-1/2 w-3 h-3 bg-red-500 rounded-full -translate-x-1/2" />
+                    <div className="w-full h-full bg-gradient-to-t from-red-600 via-red-500 to-red-400 opacity-80" />
+                    <div className="absolute -bottom-3 left-1/2 w-2.5 h-2.5 bg-gradient-to-br from-red-500 to-red-600 rounded-full -translate-x-1/2 shadow-lg shadow-red-500/30" />
                   </div>
                 </div>
               </div>

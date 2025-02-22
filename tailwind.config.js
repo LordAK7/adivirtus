@@ -9,6 +9,7 @@ export default {
       animation: {
         'gradient': 'gradient 3s ease infinite',
         'gradient-xy': 'gradient-xy 3s ease infinite',
+        reveal: 'reveal 1.5s ease-in-out forwards'
       },
       keyframes: {
         'gradient': {
@@ -28,6 +29,10 @@ export default {
             'background-size': '200% 200%',
             'background-position': 'right center'
           }
+        },
+        reveal: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(0)' }
         }
       },
       backgroundSize: {

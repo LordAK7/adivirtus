@@ -7,6 +7,7 @@ import Vision from './components/Vision';
 import Team from './components/Team';
 import Time from './components/Time';
 import Footer from './components/Footer';
+import SkillMatrix from './demo/SkillMatrix';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
       <main>
         <section id="hero">
           <Hero />
+        </section>
+        <section id="vision">
+          <Vision />
         </section>
         <section id="about">
           <About />
@@ -25,8 +29,8 @@ function App() {
         <section id="analysis">
           <Analysis />
         </section>
-        <section id="vision">
-          <Vision />
+        <section id="skillMatrix">
+          <SkillMatrix />
         </section>
         <section id="team">
           <Team />

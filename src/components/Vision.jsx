@@ -1,232 +1,162 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 
 const Vision = () => {
-  const [showVideo, setShowVideo] = useState(false);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { 
-        duration: 0.6,
-        staggerChildren: 0.2 
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') {
-        setShowVideo(false);
-      }
-    };
-
-    const handleClickOutside = (e) => {
-      if (e.target.classList.contains('video-overlay')) {
-        setShowVideo(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
   return (
-    <>
-      <motion.div 
-        ref={ref}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={containerVariants}
-        className="flex flex-col lg:flex-row items-center justify-center bg-black p-6 lg:p-10 pb-16 lg:pb-20 max-w-7xl mx-auto"
-      >
-        {/* Vision Section */}
-        <motion.div 
-          variants={itemVariants}
-          className="bg-[#3B5BDB] text-white p-8 lg:p-10 rounded-2xl shadow-xl flex-1 lg:mr-8 transform hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-500/20 before:to-transparent"
-        >
-          <div className="max-w-xl relative">
-            <motion.h2 
-              variants={itemVariants}
-              className="text-3xl font-bold mb-6 tracking-tight flex items-center"
+    <section id="vision" className="relative bg-[#000000] overflow-hidden py-32 sm:py-40">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#001132] to-[#000000] opacity-40" />
+      
+      {/* Enhanced animated lines */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(2)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-[0.5px] w-[200%] bg-gradient-to-r from-transparent via-[#2C7EFF]/30 to-transparent backdrop-blur-sm"
+            style={{
+              top: i === 0 ? '25%' : '90%',
+              left: '-50%',
+              filter: 'blur(0.5px)',
+            }}
+            animate={{
+              x: ['0%', '100%']
+            }}
+            transition={{
+              duration: 25 + (i * 5),
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+          {/* Left Column */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-16"
             >
-              OUR VISION
+              <span className="text-[#2C7EFF] text-sm font-medium tracking-[0.2em] uppercase 
+                             bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] text-transparent bg-clip-text">
+                Our Vision
+              </span>
+            </motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-5xl sm:text-6xl font-light text-white leading-tight tracking-tight"
+            >
+              Transform how we understand and develop{' '}
+              <span className="bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] text-transparent bg-clip-text font-normal">
+                human potential
+              </span>
             </motion.h2>
-            
-            <motion.p 
-              variants={itemVariants}
-              className="text-base mb-4 leading-relaxed opacity-90 font-roboto-medium hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-12 flex items-center gap-4"
             >
-              Our vision at Adivirtus is to bridge the gap between personalized learning and workforce efficiency. By leveraging AI-driven static and dynamic profiling, we aim to empower individuals and businesses to unlock their full potential. We're here to solve real-world challenges with innovative, scalable solutions.
-            </motion.p>
-            
-            <motion.p 
-              variants={itemVariants}
-              className="text-base mb-4 leading-relaxed font-roboto-medium hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
-            >
-              Building the future of corporate training.
-            </motion.p>
-
-            <motion.p 
-              variants={itemVariants}
-              className="text-base mb-8 leading-relaxed opacity-90 font-roboto-medium hover:opacity-100 transition-opacity duration-300 relative before:absolute before:left-0 before:top-0 before:w-1 before:h-full before:bg-white/10 before:rounded-full pl-4"
-            >
-              We envision a world where every learning experience is data-driven, fully personalized, and seamlessly adaptable to evolving workplace needs. By blending cutting-edge analytics with user-centric design, we strive to create training environments that not only scale effectively but also inspire continuous growth and success for employees and organizations alike.
-            </motion.p>
-
-            {/* Featured On Section */}
-            <motion.div variants={itemVariants} className="mt-12">
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl font-bold mb-6 tracking-tight"
-              >
-                FEATURED ON
-              </motion.h2>
-              
-              <motion.div 
-                variants={itemVariants}
-                className="grid grid-cols-3 gap-6 place-items-center"
-              >
-                {/* CII Logo */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex items-center justify-center bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-colors duration-300"
-                >
-                  <img
-                    src="/CIII.png"
-                    alt="CII Logo"
-                    className="max-h-16 w-auto object-contain contrast-[120%]"
-                  />
-                </motion.div>
-
-                {/* Mumbai Business Week Logo */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex items-center justify-center bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-colors duration-300"
-                >
-                  <img
-                    src="/mumbaibusinessweek.jpg"
-                    alt="Mumbai Business Week Logo"
-                    className="max-h-16 w-auto object-contain contrast-[120%]"
-                  />
-                </motion.div>
-
-                {/* Yuva Logo */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex items-center justify-center bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-colors duration-300"
-                >
-                  <img
-                    src="/YI.png"
-                    alt="Yuva Logo"
-                    className="max-h-16 w-auto object-contain contrast-[120%]"
-                  />
-                </motion.div>
-              </motion.div>
+              <div className="h-px w-12 bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF]" />
+              <span className="text-gray-400 text-sm font-medium tracking-wide">Upskill. Innovate. Grow.</span>
             </motion.div>
-          </div>
-        </motion.div>
 
-        {/* Image/Video Section */}
-        <motion.div 
-          variants={itemVariants}
-          className="relative flex-1 mt-8 lg:mt-0 w-full max-w-[400px]"
-        >
-          <motion.div 
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-            className="relative rounded-2xl overflow-hidden shadow-xl group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent z-10"></div>
-            <motion.img
-              initial={{ scale: 1.1 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.8 }}
-              src="/Reel.png"
-              alt="Instagram Reel"
-              className="w-full aspect-[9/16] object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700"
-            />
-            
-            <motion.a
-              href="https://www.instagram.com/reel/DECDND_PBE1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute inset-0 z-20"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-12"
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-opacity-90 before:absolute before:inset-0 before:rounded-full before:border-2 before:border-white/30 before:scale-150 before:opacity-0 hover:before:scale-125 hover:before:opacity-100 before:transition-all">
-                  <div className="w-0 h-0 border-t-[12px] border-b-[12px] border-l-[20px] border-transparent border-l-blue-600 ml-2 group-hover:border-l-blue-700" />
-                </div>
-              </div>
-            </motion.a>
-            
-            <motion.div 
-              variants={itemVariants}
-              className="absolute bottom-4 left-4 text-white z-20"
-            >
-              <p className="text-sm font-medium tracking-wide">Watch Our Story</p>
-              <div className="flex items-center mt-1">
-                <div className="w-1 h-1 bg-white/50 rounded-full"></div>
-                <p className="text-xs opacity-80 ml-2">Instagram Reel</p>
-              </div>
+              <motion.button
+                whileHover={{ 
+                  scale: 1.02,
+                  backgroundColor: "rgba(44, 126, 255, 0.15)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative px-8 py-4 bg-[#2C7EFF]/10 rounded-full 
+                         text-[#2C7EFF] text-sm font-medium tracking-wide
+                         border border-[#2C7EFF]/20 transition-all duration-500
+                         hover:border-[#2C7EFF]/40 hover:shadow-lg hover:shadow-[#2C7EFF]/10
+                         backdrop-blur-sm"
+              >
+                Learn about our approach
+                <span className="inline-block ml-2 transform transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              </motion.button>
             </motion.div>
           </motion.div>
-        </motion.div>
-      </motion.div>
 
-      {/* Video Modal */}
-      {showVideo && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center video-overlay backdrop-blur-sm"
-        >
+          {/* Right Column */}
           <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="w-full max-w-4xl mx-4 aspect-video relative"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col justify-start space-y-16 pt-12"
           >
-            <iframe
-              className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/cBsHFf5VGOw?autoplay=1"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="relative pl-8 border-l border-[#2C7EFF]/30"
+            >
+              <div className="absolute left-0 top-0 w-[1px] h-full overflow-hidden">
+                <motion.div 
+                  className="h-full w-full bg-gradient-to-b from-[#2C7EFF] to-[#47A2FF]"
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: "0%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                />
+              </div>
+              <p className="mt-8 text-xl text-gray-400 leading-relaxed max-w-2xl">
+                We empower organizations with intelligent, data-driven upskilling solutions that transform the workforce, foster continuous growth, and drive tangible business impact.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="relative pl-8 border-l border-[#2C7EFF]/30"
+            >
+              <div className="absolute left-0 top-0 w-[1px] h-full overflow-hidden">
+                <motion.div 
+                  className="h-full w-full bg-gradient-to-b from-[#2C7EFF] to-[#47A2FF]"
+                  initial={{ y: "100%" }}
+                  whileInView={{ y: "0%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                />
+              </div>
+              <p className="mt-8 text-xl text-gray-400 leading-relaxed max-w-2xl">
+                Through adaptive technology and personalized learning experiences, we make professional development more accessible, efficient, and future-focused—helping every employee and employer stay ahead in a rapidly evolving world.
+              </p>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </>
+        </div>
+      </div>
+    </section>
   );
 };
 

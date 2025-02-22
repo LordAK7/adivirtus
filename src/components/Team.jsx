@@ -40,54 +40,131 @@ const TeamMember = ({ image, name, role, isLarge, index }) => {
 };
 
 const Team = () => {
-  const headerRef = useRef(null);
-  const isInView = useInView(headerRef, { once: true });
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true });
 
   return (
-    <section className="py-12 bg-black sm:py-16 lg:py-20 xl:py-24">
-      <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-        <div className="overflow-hidden bg-zinc-900 rounded-3xl">
-          <div className="relative grid grid-cols-2 lg:grid-cols-4">
-            <div className="absolute left-0 right-0 w-full border-t border-gray-700" style={{ top: '50%' }}></div>
+    <section className="relative py-24 bg-black overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#001132] to-[#000000] opacity-30" />
+      
+      {/* Enhanced animated lines */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute h-[0.5px] w-[200%] bg-gradient-to-r from-transparent via-[#2C7EFF]/20 to-transparent"
+          style={{
+            top: '30%',
+            left: '-50%',
+            filter: 'blur(0.5px)',
+          }}
+          animate={{
+            x: ['0%', '100%']
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <motion.div
+          ref={containerRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="grid lg:grid-cols-2 gap-16 items-center"
+        >
+          {/* Image Section */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="relative aspect-[4/5] lg:aspect-[3/4]"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#2C7EFF]/20 to-transparent rounded-3xl 
+              blur-2xl transform -rotate-6 scale-95" />
+            <div className="relative h-full rounded-3xl overflow-hidden border border-white/10">
+              <img 
+                src="/Team/God.jpeg" 
+                alt="Aditya Vijay Kamble" 
+                className="object-cover w-full h-full object-top transform transition-transform duration-700 
+                  hover:scale-105"
+              />
+            </div>
+          </motion.div>
+
+          {/* Content Section */}
+          <div className="space-y-8">
             <motion.div
-              ref={headerRef}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6 }}
-              className="col-span-2 px-8 py-12 text-center xl:px-12 xl:pr-24 lg:text-left lg:order-1 lg:col-span-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">Meet the Team</h2>
-              <p className="mt-4 text-base font-normal leading-7 text-gray-300 lg:text-lg lg:mt-6 lg:leading-8">
-              Adivirtus is driven by a passionate team of innovators, each bringing unique expertise to redefine learning and workforce solutions. Together, we're turning bold ideas into impactful realities.
-              </p>
+              <span className="text-[#2C7EFF] text-sm font-medium tracking-[0.2em] uppercase 
+                bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] text-transparent bg-clip-text">
+                Founder & CEO
+              </span>
             </motion.div>
 
-            {teamMembers.map((member, index) => (
-              <TeamMember key={index} {...member} index={index} />
-            ))}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-5xl font-light text-white leading-tight"
+            >
+              Meet{' '}
+              <span className="bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] text-transparent bg-clip-text 
+                font-normal">
+                Aditya Vijay Kamble
+              </span>
+            </motion.h2>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="col-span-2 lg:col-span-4 flex items-end justify-start px-8 py-8 xl:px-12 lg:order-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="space-y-6"
             >
-              <a 
-                href="https://www.instagram.com/thegodofcomputers/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center text-sm font-semibold text-gray-300 transition-all duration-200 group hover:text-white hover:underline"
+              <p className="text-xl text-gray-400 leading-relaxed">
+                Visionary technologist and entrepreneur dedicated to revolutionizing the landscape 
+                of skill development and professional growth through innovative AI solutions.
+              </p>
+
+              <div className="flex items-center gap-4">
+                <div className="h-px w-12 bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF]" />
+                <span className="text-gray-400 text-sm font-medium tracking-wide">
+                  Innovation. Vision. Impact.
+                </span>
+              </div>
+
+              <motion.a
+                href="https://www.linkedin.com/in/aditya-kamble-god/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 text-[#2C7EFF] group"
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.3 }}
               >
-                Follow us on Instagram
-                <svg className="w-5 h-5 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
+                <span className="text-sm font-medium">Connect on LinkedIn</span>
+                <svg 
+                  className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M17 8l4 4m0 0l-4 4m4-4H3" 
+                  />
                 </svg>
-              </a>
+              </motion.a>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
