@@ -127,7 +127,7 @@ const Team = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="space-y-6"
             >
-              <p className="text-xl text-gray-400 leading-relaxed">
+              <p className="mt-8 text-xl text-gray-400 leading-relaxed max-w-2xl">
                 Visionary technologist and entrepreneur dedicated to revolutionizing the landscape 
                 of skill development and professional growth through innovative AI solutions.
               </p>
