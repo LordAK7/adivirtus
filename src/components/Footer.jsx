@@ -71,7 +71,7 @@ const Footer = () => {
             </a>
             {/* Website Icon */}
             <a 
-              href="https://thegodofcomputers.com/" 
+              href="https://cc11-182-48-217-127.ngrok-free.app/"
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-gray-400 hover:text-[#2C7EFF] transition-colors duration-300"
