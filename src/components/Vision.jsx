@@ -85,32 +85,6 @@ const Vision = () => {
               <div className="h-px w-12 bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF]" />
               <span className="text-gray-400 text-sm font-medium tracking-wide">Upskill. Innovate. Grow.</span>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-12"
-            >
-              <motion.button
-                whileHover={{ 
-                  scale: 1.02,
-                  backgroundColor: "rgba(44, 126, 255, 0.15)"
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative px-8 py-4 bg-[#2C7EFF]/10 rounded-full 
-                         text-[#2C7EFF] text-sm font-medium tracking-wide
-                         border border-[#2C7EFF]/20 transition-all duration-500
-                         hover:border-[#2C7EFF]/40 hover:shadow-lg hover:shadow-[#2C7EFF]/10
-                         backdrop-blur-sm"
-              >
-                Learn about our approach
-                <span className="inline-block ml-2 transform transition-transform duration-500 group-hover:translate-x-1">
-                  →
-                </span>
-              </motion.button>
-            </motion.div>
           </motion.div>
 
           {/* Right Column */}

@@ -371,7 +371,7 @@ const Internship = () => {
             </div>
             
             <motion.a
-              href="mailto:ceo@adivirtus.com?subject=Internship Application&body=Dear Adivirtus Team,%0A%0AI am writing to apply for the [Position Title] internship position. Please find attached my resume and links to my recent projects.%0A%0ALinkedIn Profile: [Your LinkedIn URL]%0A%0AWhy I want to join: [Your reason]%0A%0AThank you for considering my application.%0A%0ASincerely,%0A[Your Name]"
+              href="https://forms.gle/mFgKLy1GNS74tHML8"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, backgroundColor: "rgba(44, 126, 255, 0.9)" }}
