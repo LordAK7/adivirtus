@@ -86,6 +86,23 @@ const internshipPositions = [
         <path d="M4 6h16M4 10h16M4 14h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
       </svg>
     )
+  },
+  {
+    id: 'graphic-design',
+    title: 'Graphic Design Intern',
+    description: 'Create visually compelling graphics to support marketing and product initiatives.',
+    requirements: [
+      'Proficiency in Adobe Photoshop and Lightroom.',
+      'Strong aesthetic design sense with attention to detail.',
+      'Ability to collaborate with cross-functional teams to deliver cohesive visual content.',
+      'Experience with other Adobe Creative Suite applications is a plus.'
+    ],
+    icon: (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4v2m0 12v2M4 12h2m12 0h2m-4.5-7.5l1.5-1.5m-9 9l1.5-1.5m6 0l1.5 1.5m-9-9l1.5 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
+      </svg>
+    )
   }
 ];
 
