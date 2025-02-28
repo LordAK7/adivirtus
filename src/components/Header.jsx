@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MenuIcon = () => (
   <motion.div 
@@ -14,10 +15,19 @@ const MenuIcon = () => (
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    element.scrollIntoView({ behavior: 'smooth' });
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
+    }
     setExpanded(false);
   };
 
@@ -25,9 +35,10 @@ const Header = () => {
     { id: 'hero', label: 'Home' },
     { id: 'vision', label: 'Vision' },
     { id: 'about', label: 'About' },
-    { id: 'features', label: 'Features  ' },
+    { id: 'features', label: 'Features' },
     { id: 'hrDashboard', label: 'HRDashboard' },
-    { id: 'founder', label: 'Founder' }
+    { id: 'founder', label: 'Founder' },
+    { type: 'link', to: '/internship', label: 'Internships', highlight: true }
   ];
 
   return (
@@ -40,14 +51,14 @@ const Header = () => {
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.a
-            href="#"
-            className="text-xl text-white font-semibold tracking-wide"
+          <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Adivirtus AI
-          </motion.a>
+            <Link to="/" className="text-xl text-white font-semibold tracking-wide">
+              Adivirtus AI
+            </Link>
+          </motion.div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden">
@@ -63,15 +74,26 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-sm font-medium text-gray-400 transition-colors duration-200 hover:text-white"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {item.label}
-              </motion.button>
+              item.type === 'link' ? (
+                <motion.div key={item.to} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link 
+                    to={item.to}
+                    className={`text-sm font-medium ${item.highlight ? 'text-[#2C7EFF]' : 'text-gray-400'} transition-colors duration-200 hover:text-white`}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-sm font-medium text-gray-400 transition-colors duration-200 hover:text-white"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item.label}
+                </motion.button>
+              )
             ))}
             
             <motion.button
@@ -100,19 +122,35 @@ const Header = () => {
             >
               <div className="flex flex-col py-4 space-y-4">
                 {menuItems.map((item) => (
-                  <motion.button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="text-sm font-medium text-gray-400 transition-colors duration-200 hover:text-white text-left"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {item.label}
-                  </motion.button>
+                  item.type === 'link' ? (
+                    <motion.div 
+                      key={item.to}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setExpanded(false)}
+                    >
+                      <Link 
+                        to={item.to}
+                        className={`text-sm font-medium ${item.highlight ? 'text-[#2C7EFF]' : 'text-gray-400'} transition-colors duration-200 hover:text-white block`}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ) : (
+                    <motion.button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="text-sm font-medium text-gray-400 transition-colors duration-200 hover:text-white text-left"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {item.label}
+                    </motion.button>
+                  )
                 ))}
                 
                 <motion.button
-                  onClick={() => scrollToSection('time')}
+                  onClick={() => scrollToSection('contact')}
                   className="px-6 py-2 text-sm font-medium text-white bg-[#2C7EFF] rounded-full transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

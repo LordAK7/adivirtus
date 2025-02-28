@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const ref = useRef(null);
@@ -17,7 +18,7 @@ const Footer = () => {
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse" />
       
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 mb-8">
           {/* Copyright */}
           <motion.div
             variants={linkVariants}
@@ -93,6 +94,35 @@ const Footer = () => {
             </p>
           </motion.div>
         </div>
+        
+        {/* Quick Links Section */}
+        <motion.div
+          variants={linkVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="border-t border-[#2C7EFF]/10 pt-6 flex flex-col md:flex-row justify-center items-center gap-6"
+        >
+          <span className="text-gray-500 text-sm">Quick Links:</span>
+          <div className="flex flex-wrap justify-center gap-6">
+            <a href="#about" className="text-gray-400 hover:text-[#2C7EFF] transition-colors duration-300 text-sm">
+              About Us
+            </a>
+            <a href="#features" className="text-gray-400 hover:text-[#2C7EFF] transition-colors duration-300 text-sm">
+              Features
+            </a>
+            <Link 
+              to="/internship" 
+              className="relative text-[#2C7EFF] transition-colors duration-300 text-sm group"
+            >
+              <span className="relative z-10">Internship Opportunities</span>
+              <span className="absolute inset-0 bg-[#2C7EFF]/10 rounded-full -z-0 scale-110 opacity-50 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span className="absolute -top-1 -right-2 w-2 h-2 bg-[#2C7EFF] rounded-full animate-pulse"></span>
+            </Link>
+            <a href="#contact" className="text-gray-400 hover:text-[#2C7EFF] transition-colors duration-300 text-sm">
+              Contact
+            </a>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );
