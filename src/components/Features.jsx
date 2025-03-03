@@ -37,23 +37,23 @@ const Features = () => {
 
   return (
     <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden bg-black">
-      {/* Refined gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#001132] to-black opacity-20" />
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#001132] to-black opacity-10" />
       
-      {/* Enhanced animated lines */}
+      {/* Refined animated lines - more subtle and elegant */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(3)].map((_, i) => (
+        {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute h-[1px] w-[200%] bg-gradient-to-r from-transparent via-[#2C7EFF]/10 to-transparent"
+            className="absolute h-[0.5px] w-[200%] bg-gradient-to-r from-transparent via-[#2C7EFF]/5 to-transparent"
             style={{
-              top: `${20 + (i * 30)}%`,
+              top: `${15 + (i * 18)}%`,
               left: '-50%',
-              filter: 'blur(1px)',
+              filter: 'blur(0.5px)',
             }}
             animate={{ x: ['0%', '100%'] }}
             transition={{
-              duration: 15 + (i * 5),
+              duration: 18 + (i * 4),
               repeat: Infinity,
               ease: "linear"
             }}
@@ -62,38 +62,40 @@ const Features = () => {
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Interactive Header */}
+        {/* Refined Header with Apple-inspired typography */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16 sm:mb-20 lg:mb-24"
         >
           <motion.span 
-            className="inline-block text-[#2C7EFF] text-sm font-medium tracking-widest uppercase mb-6 
-                     relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full 
-                     after:h-px after:bg-gradient-to-r after:from-transparent after:via-[#2C7EFF]/50 
-                     after:to-transparent"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="inline-block text-[#2C7EFF] text-xs font-medium tracking-[0.2em] uppercase mb-6 
+                     relative after:content-[''] after:absolute after:bottom-[-8px] after:left-1/2 after:w-12 
+                     after:h-[0.5px] after:bg-[#2C7EFF]/30 after:-translate-x-1/2"
+            whileHover={{ letterSpacing: "0.25em" }}
+            transition={{ duration: 0.3 }}
           >
             Features
           </motion.span>
           <motion.h2 
             className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight max-w-4xl mx-auto"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+            initial={{ backgroundPosition: "0% 50%" }}
+            whileHover={{ backgroundPosition: "100% 50%" }}
+            transition={{ duration: 1.5 }}
+            style={{ backgroundSize: "200% auto" }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight max-w-4xl mx-auto"
           >
             Your One-Stop Platform for{' '}
-            <span className="bg-gradient-to-r from-[#2C7EFF] to-[#47A2FF] text-transparent bg-clip-text font-normal">
+            <span className="bg-gradient-to-r from-[#2C7EFF] via-[#47A2FF] to-[#2C7EFF] text-transparent bg-clip-text font-normal bg-size-200">
               Corporate Learning & Upskilling
             </span>
           </motion.h2>
         </motion.div>
 
-        {/* Enhanced Feature Grid with Improved Responsiveness */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+        {/* Refined Feature Grid with Apple-inspired card design */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -101,39 +103,62 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative"
+              className="group"
             >
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="relative p-6 sm:p-8 rounded-2xl backdrop-blur-sm
-                         transition-all duration-300
-                         bg-gradient-to-b from-white/[0.03] to-transparent
-                         border border-white/[0.05]
-                         hover:border-[#2C7EFF]/20
-                         hover:bg-[#2C7EFF]/[0.02]"
+                whileHover={{ y: -5 }}
+                whileTap={{ y: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="relative p-8 sm:p-10 rounded-3xl
+                         bg-black/80 backdrop-blur-md
+                         border border-white/[0.03]
+                         shadow-[0_0_25px_rgba(0,0,0,0.2)]
+                         overflow-hidden"
               >
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#2C7EFF]/[0.03] to-transparent 
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#2C7EFF]/[0.01] to-transparent opacity-0 
+                              group-hover:opacity-100 transition-opacity duration-700" />
                 
-                {/* Glow effect */}
-                <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-[#2C7EFF]/10 to-transparent 
-                              opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300" />
+                {/* Subtle glow effect on hover */}
+                <motion.div 
+                  className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-[#2C7EFF]/5 to-transparent 
+                            opacity-0 group-hover:opacity-100 blur-xl"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.7 }}
+                />
 
-                {/* Content */}
-                <div className="relative">
-                  <div className="text-[#2C7EFF] mb-6 transition-transform duration-300 group-hover:scale-110">
+                {/* Animated accent line */}
+                <motion.div 
+                  className="absolute h-[1px] w-0 bg-gradient-to-r from-transparent via-[#2C7EFF]/30 to-transparent top-0 left-0"
+                  initial={{ width: "0%" }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.5 }}
+                />
+
+                {/* Content with refined spacing and animations */}
+                <div className="relative z-10">
+                  <motion.div 
+                    className="text-[#2C7EFF] mb-7"
+                    whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+                    transition={{ duration: 0.5 }}
+                  >
                     {feature.icon}
-                  </div>
+                  </motion.div>
                   
-                  <h3 className="text-xl sm:text-2xl font-light text-white mb-3 sm:mb-4 tracking-tight
-                               transition-colors duration-300 group-hover:text-[#2C7EFF]">
+                  <motion.h3 
+                    className="text-xl sm:text-2xl font-light text-white mb-4 tracking-tight"
+                    initial={{ backgroundPosition: "0% 50%" }}
+                    whileHover={{ backgroundPosition: "100% 50%" }}
+                    transition={{ duration: 0.8 }}
+                    style={{ backgroundSize: "200% auto" }}
+                    className="text-xl sm:text-2xl font-light mb-4 tracking-tight bg-gradient-to-r from-white via-white to-[#2C7EFF] bg-clip-text text-transparent bg-size-200"
+                  >
                     {feature.title}
-                  </h3>
+                  </motion.h3>
                   
-                  <p className="text-gray-400 text-sm sm:text-base leading-relaxed
-                               transition-colors duration-300 group-hover:text-gray-300">
+                  <p className="text-gray-400/90 text-sm sm:text-base leading-relaxed
+                               group-hover:text-gray-300/90 transition-colors duration-500">
                     {feature.description}
                   </p>
                 </div>

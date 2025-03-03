@@ -68,3 +68,8 @@
   scrollbar-width: 8px;
   scrollbar-color: rgba(44, 126, 255, 0.3) rgba(0, 0, 0, 0.8);
 }
+
+/* Add this to your global CSS */
+.bg-size-200 {
+  background-size: 200% auto;
+}
